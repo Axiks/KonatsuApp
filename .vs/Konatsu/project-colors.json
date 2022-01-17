@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e264cbf7-0396-402a-a9d7-c6ad9fa0deaa": {
+      "ProjectGuid": "e264cbf7-0396-402a-a9d7-c6ad9fa0deaa",
+      "DisplayName": "Konatsu.DAL",
+      "ColorIndex": 0
+    },
+    "0b2b1b68-dab4-4094-9126-2cdece5660df": {
+      "ProjectGuid": "0b2b1b68-dab4-4094-9126-2cdece5660df",
+      "DisplayName": "Konatsu.DAL",
+      "ColorIndex": 1
+    },
+    "4d1d333f-78e5-4fac-8003-5ea1d306ed34": {
+      "ProjectGuid": "4d1d333f-78e5-4fac-8003-5ea1d306ed34",
+      "DisplayName": "Konatsu.DAL.Migrations",
+      "ColorIndex": 2
+    },
+    "10d5d98e-240b-4d8f-b35a-0f8396cc7f7a": {
+      "ProjectGuid": "10d5d98e-240b-4d8f-b35a-0f8396cc7f7a",
+      "DisplayName": "Konatsu.API",
+      "ColorIndex": 3
+    },
+    "f4cec881-1bd1-4b9d-896e-57428b0ff8d6": {
+      "ProjectGuid": "f4cec881-1bd1-4b9d-896e-57428b0ff8d6",
+      "DisplayName": "Konatsu.API",
+      "ColorIndex": 4
+    },
+    "9d6ce1a0-bdf7-4fbc-86ea-fe6ad0af39a1": {
+      "ProjectGuid": "9d6ce1a0-bdf7-4fbc-86ea-fe6ad0af39a1",
+      "DisplayName": "Konatsu.Web",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Konatsu.API.Data;
+using Konatsu.API.Mapper;
 
 namespace Konatsu.API
 {
@@ -44,9 +45,8 @@ namespace Konatsu.API
             );
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            /*services.AddDefaultIdentity<IdentityUser>(
-                );*/
-            // services.AddD
+
+            services.AddAutoMapper(typeof(UserProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

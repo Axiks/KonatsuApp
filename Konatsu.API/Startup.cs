@@ -7,10 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Konatsu.API.Data;
 
 namespace Konatsu.API
 {
@@ -40,6 +42,11 @@ namespace Konatsu.API
                     // x => x.MigrationsAssembly("Konatsu.DAL.Migrations")
                     )
             );
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            /*services.AddDefaultIdentity<IdentityUser>(
+                );*/
+            // services.AddD
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

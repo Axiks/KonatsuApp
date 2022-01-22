@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Konatsu.API.Data;
 using Konatsu.API.Mapper;
+using Konatsu.API.Helpers;
 
 namespace Konatsu.API
 {
@@ -62,6 +63,8 @@ namespace Konatsu.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

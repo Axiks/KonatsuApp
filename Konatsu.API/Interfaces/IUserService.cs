@@ -10,9 +10,7 @@ namespace Konatsu.API.Interfaces
 {
     public interface IUserService : IDisposable
     {
-        void AddUser(string username);
-        Task<UserEntity> GetUser(int id);
-        void DeleteUser(UserEntity user);
+        // void DeleteUser(UserEntity user);
 
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         Task<AuthenticateResponse> Register(UserModel userModel);

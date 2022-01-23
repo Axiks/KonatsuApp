@@ -12,9 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Konatsu.API.Data;
 using Konatsu.API.Mapper;
 using Konatsu.API.Helpers;
+using Konatsu.API.Interfaces;
+using Konatsu.API.Services;
 
 namespace Konatsu.API
 {
@@ -30,24 +31,21 @@ namespace Konatsu.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(options =>
+                options
+                    .UseNpgsql(Configuration.GetConnectionString("DefaultConnection")
+                    )
+            );
 
+            services.AddScoped(typeof(IEfRepository<>), typeof(UserRepository<>));
+
+            services.AddAutoMapper(typeof(UserProfile));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Konatsu.API", Version = "v1" });
             });
-            services.AddDbContext<DataContext>(options => 
-                options
-                    .UseNpgsql(Configuration.GetConnectionString("DefaultConnection")
-                    // b => b.MigrationsAssembly("Konatsu.API")
-                    // x => x.MigrationsAssembly("Konatsu.API")
-                    // x => x.MigrationsAssembly("Konatsu.DAL.Migrations")
-                    )
-            );
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddAutoMapper(typeof(UserProfile));
+            services.AddScoped<IUserService, UserService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

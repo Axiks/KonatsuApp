@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Konatsu.API.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,24 +40,14 @@ namespace Konatsu.API.Interfaces
             return ToLong(result.Entity.Id);
         }
 
-        List<T> IEfRepository<T>.GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<long> IEfRepository<T>.Add(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private static Guid ToGuid(long value)
+        private Guid ToGuid(long value)
         {
             byte[] guidData = new byte[16];
             Array.Copy(BitConverter.GetBytes(value), guidData, 8);
             return new Guid(guidData);
         }
 
-        private static long ToLong(Guid guid)
+        private long ToLong(Guid guid)
         {
             if (BitConverter.ToInt64(guid.ToByteArray(), 8) != 0)
                 throw new OverflowException("Value was either too large or too small for an Int64.");

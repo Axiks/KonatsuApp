@@ -1,4 +1,4 @@
-﻿namespace Konatsu.API
+﻿namespace Konatsu.API.Entities
 {
     public class HabitEntity : BaseEntity
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Konatsu.API
+namespace Konatsu.API.Entities
 {
-    public class BaseEntity : IEntity
+    public class BaseEntity
     {
         public Guid Id { get; set; }
         public bool IsActive { get; set; }

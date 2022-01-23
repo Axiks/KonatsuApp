@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Konatsu.API
+namespace Konatsu.API.Entities
 {
     public class UserEntity: BaseEntity
     {

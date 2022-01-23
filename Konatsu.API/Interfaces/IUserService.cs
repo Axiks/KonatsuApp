@@ -1,4 +1,5 @@
 ﻿using Konatsu.API;
+using Konatsu.API.Entities;
 using Konatsu.API.Models;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace Konatsu.API.Interfaces
 {
-    public interface IUserService : IDisposable
+    public interface IUserService
     {
-        // void DeleteUser(UserEntity user);
-
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         Task<AuthenticateResponse> Register(UserModel userModel);
         IEnumerable<UserEntity> GetAll();

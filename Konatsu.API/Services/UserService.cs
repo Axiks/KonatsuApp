@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Konatsu.API.Entities;
 using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
 using Konatsu.API.Models;
@@ -41,11 +42,6 @@ namespace Konatsu.API.Services
             var token = _configuration.GenerateJwtToken(user);
 
             return new AuthenticateResponse(user, token);
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<UserEntity> GetAll()

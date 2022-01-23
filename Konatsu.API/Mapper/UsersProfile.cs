@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Konatsu.API.Entities;
 using Konatsu.API.Models;
 
 namespace Konatsu.API.Mapper

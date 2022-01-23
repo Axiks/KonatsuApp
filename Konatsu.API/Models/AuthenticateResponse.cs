@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Konatsu.API.Entities;
+using System;
 
 namespace Konatsu.API.Models
 {

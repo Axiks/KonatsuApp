@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Konatsu.API
+namespace Konatsu.API.Entities
 {
     public interface IEntity
     {

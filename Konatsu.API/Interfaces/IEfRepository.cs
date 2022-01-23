@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Konatsu.API.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Konatsu.API.Interfaces

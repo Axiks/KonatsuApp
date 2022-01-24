@@ -20,9 +20,9 @@ namespace Konatsu.API.Interfaces
             return _context.Set<T>().ToList();
         }
 
-        public T GetById(long id)
+        public T GetById(Guid id)
         {
-            var result = _context.Set<T>().FirstOrDefault(x => x.Id == ToGuid(id));
+            var result = _context.Set<T>().FirstOrDefault(x => x.Id == id);
 
             if (result == null)
             {
@@ -33,25 +33,11 @@ namespace Konatsu.API.Interfaces
             return result;
         }
 
-        public async Task<long> Add(T entity)
+        public async Task<Guid> Add(T entity)
         {
             var result = await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
-            return ToLong(result.Entity.Id);
-        }
-
-        private Guid ToGuid(long value)
-        {
-            byte[] guidData = new byte[16];
-            Array.Copy(BitConverter.GetBytes(value), guidData, 8);
-            return new Guid(guidData);
-        }
-
-        private long ToLong(Guid guid)
-        {
-            if (BitConverter.ToInt64(guid.ToByteArray(), 8) != 0)
-                throw new OverflowException("Value was either too large or too small for an Int64.");
-            return BitConverter.ToInt64(guid.ToByteArray(), 0);
+            return result.Entity.Id;
         }
     }
 }

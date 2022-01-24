@@ -145,3 +145,4 @@ C:\Users\Niko\source\repos\Konatsu\Konatsu.API\bin\Debug\net5.0\Microsoft.Extens
 C:\Users\Niko\source\repos\Konatsu\Konatsu.API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\Niko\source\repos\Konatsu\Konatsu.API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Niko\source\repos\Konatsu\Konatsu.API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

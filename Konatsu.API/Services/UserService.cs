@@ -49,7 +49,7 @@ namespace Konatsu.API.Services
             return _userRepository.GetAll();
         }
 
-        public UserEntity GetById(int id)
+        public UserEntity GetById(Guid id)
         {
             return _userRepository.GetById(id);
         }

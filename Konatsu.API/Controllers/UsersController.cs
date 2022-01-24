@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Konatsu.API.Helpers;
 using Konatsu.API.Models;
-using Konatsu.API.Services;
-using Microsoft.AspNetCore.Authorization;
 using Konatsu.API.Interfaces;
 
 namespace Konatsu.API.Controllers

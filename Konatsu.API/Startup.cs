@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ using Konatsu.API.Mapper;
 using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
 using Konatsu.API.Services;
+using Microsoft.AspNetCore.Server.IISIntegration;
 
 namespace Konatsu.API
 {
@@ -40,12 +42,27 @@ namespace Konatsu.API
             services.AddScoped(typeof(IEfRepository<>), typeof(UserRepository<>));
 
             services.AddAutoMapper(typeof(UserProfile));
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Konatsu.API", Version = "v1" });
             });
-            services.AddScoped<IUserService, UserService>(); 
+            services.AddScoped<IUserService, UserService>();
+
+            /*services.AddAuthentication(IISDefaults.AuthenticationScheme);
+
+            services.AddAuthentication()
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Unauthorized/";
+                    options.AccessDeniedPath = "/Account/Forbidden/";
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.Audience = "http://localhost:44240/";
+                    options.Authority = "http://localhost:44240/";
+                });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,9 +77,9 @@ namespace Konatsu.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseMiddleware<JwtMiddleware>();
+
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

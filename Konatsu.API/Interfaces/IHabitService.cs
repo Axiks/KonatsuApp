@@ -1,4 +1,5 @@
 ﻿using Konatsu.API.Entities;
+using Konatsu.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Konatsu.API.Interfaces
 {
-    public interface IHabitService : IDisposable
+    public interface IHabitService
     {
-        void AddHabbit(String title, String description);
-        HabitEntity GetHabbit(int id);
-        HabitEntity FindHabbit(string title);
-        void DeleteHabbit(int id);
-        List<HabitEntity> AllHabits();
+        Task<Guid> Create(HabitEntity habitEntity);
+        HabitEntity GetById(Guid id);
+        void Delete(Guid id);
+        void ForceDelete(Guid id);
+        List<HabitEntity> GetAll();
     }
 }

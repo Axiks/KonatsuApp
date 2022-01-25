@@ -43,10 +43,15 @@ namespace Konatsu.API.Migrations
                     b.Property<Guid?>("UserCreated")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("UserEntityId")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid?>("UserUpdated")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserEntityId");
 
                     b.ToTable("Habits");
                 });
@@ -56,6 +61,9 @@ namespace Konatsu.API.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("About")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("BirthDay")
                         .HasColumnType("timestamp without time zone");
@@ -81,9 +89,6 @@ namespace Konatsu.API.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<string>("Patronymic")
-                        .HasColumnType("text");
-
                     b.Property<Guid?>("UserCreated")
                         .HasColumnType("uuid");
 
@@ -96,6 +101,18 @@ namespace Konatsu.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Konatsu.API.Entities.HabitEntity", b =>
+                {
+                    b.HasOne("Konatsu.API.Entities.UserEntity", null)
+                        .WithMany("habits")
+                        .HasForeignKey("UserEntityId");
+                });
+
+            modelBuilder.Entity("Konatsu.API.Entities.UserEntity", b =>
+                {
+                    b.Navigation("habits");
                 });
 #pragma warning restore 612, 618
         }

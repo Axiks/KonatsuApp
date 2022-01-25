@@ -39,7 +39,7 @@ namespace Konatsu.API
                     )
             );
 
-            services.AddScoped(typeof(IEfRepository<>), typeof(UserRepository<>));
+            services.AddScoped(typeof(IEfRepository<>), typeof(EFRepository<>));
 
             services.AddAutoMapper(typeof(UserProfile));
             services.AddCors();
@@ -49,20 +49,7 @@ namespace Konatsu.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Konatsu.API", Version = "v1" });
             });
             services.AddScoped<IUserService, UserService>();
-
-            /*services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
-            services.AddAuthentication()
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/Account/Unauthorized/";
-                    options.AccessDeniedPath = "/Account/Forbidden/";
-                })
-                .AddJwtBearer(options =>
-                {
-                    options.Audience = "http://localhost:44240/";
-                    options.Authority = "http://localhost:44240/";
-                });*/
+            services.AddScoped<IHabitService, HabitService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,8 +65,6 @@ namespace Konatsu.API
             app.UseRouting();
 
             app.UseMiddleware<JwtMiddleware>();
-
-            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

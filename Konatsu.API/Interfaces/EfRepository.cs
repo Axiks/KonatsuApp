@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Konatsu.API.Interfaces
 {
-    public class UserRepository<T> : IEfRepository<T> where T : BaseEntity
+    public class EFRepository<T> : IEfRepository<T> where T : BaseEntity
     {
         private readonly DataContext _context;
 
-        public UserRepository(DataContext context)
+        public EFRepository(DataContext context)
         {
             _context = context;
         }

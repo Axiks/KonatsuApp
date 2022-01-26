@@ -15,9 +15,9 @@ namespace Konatsu.API.Interfaces
             _context = context;
         }
 
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>();
         }
 
         public T GetById(Guid id)
@@ -33,11 +33,32 @@ namespace Konatsu.API.Interfaces
             return result;
         }
 
-        public async Task<Guid> Add(T entity)
+        public async Task<int> SaveChangesAsync()
         {
-            var result = await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return result.Entity.Id;
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<Guid> Add<T>(T newEntity) where T : class, IEntity
+        {
+            var entity = await _context.Set<T>().AddAsync(newEntity);
+            return entity.Entity.Id;
+        }
+
+        public async Task Delete<T>(Guid id) where T : class, IEntity
+        {
+            var item = GetById(id);
+            item.IsActive = false;
+            await Task.Run(() => _context.Update(item));
+        }
+
+        public async Task Remove<T>(T entity) where T : class, IEntity
+        {
+            await Task.Run(() => _context.Set<T>().Remove(entity));
+        }
+
+        public async Task Update<T>(T entity) where T : class, IEntity
+        {
+            await Task.Run(() => _context.Set<T>().Update(entity));
         }
     }
 }

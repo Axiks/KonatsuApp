@@ -1,6 +1,7 @@
 ﻿using Konatsu.API.Entities;
 using Konatsu.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,29 +27,34 @@ namespace Konatsu.API.Controllers
 
         // GET api/<HabitsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return id.ToString();
+            var habit = _habitService.GetById(id);
+            return Ok(habit);
         }
 
         // POST api/<HabitsController>
         [HttpPost]
         public IActionResult Post(HabitEntity habitEntity)
         {
-            _habitService.Create(habitEntity);
-            return Ok();
+            var habit = _habitService.Create(habitEntity);
+            return Ok(habit.Result);
         }
 
-        // PUT api/<HabitsController>/5
+        /*// PUT api/<HabitsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, HabitEntity habitEntity)
         {
-        }
+            var habit = _habitService.GetById(id);
+            _
+        }*/
 
         // DELETE api/<HabitsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(Guid id)
         {
+            _habitService.Delete(id);
+            return Ok();
         }
     }
 }

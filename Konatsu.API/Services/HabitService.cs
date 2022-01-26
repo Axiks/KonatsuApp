@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Konatsu.API.Services
 {
@@ -25,20 +26,24 @@ namespace Konatsu.API.Services
         public async Task<Guid> Create(HabitEntity habitEntity)
         {
             var addHabit = await _habitRepository.Add(habitEntity);
+            await _habitRepository.SaveChangesAsync();
+            
             return addHabit;
         }
 
-        public void Delete(Guid id)
+        public async Task Remove(HabitEntity habitEntity)
         {
-            throw new NotImplementedException();
+            await _habitRepository.Remove(habitEntity);
+            await _habitRepository.SaveChangesAsync();
         }
 
-        public void ForceDelete(Guid id)
+        public async Task Delete(Guid id)
         {
-            throw new NotImplementedException();
+            await _habitRepository.Delete<HabitEntity>(id);
+            await _habitRepository.SaveChangesAsync();
         }
 
-        public List<HabitEntity> GetAll()
+        public IQueryable<HabitEntity> GetAll()
         {
             return _habitRepository.GetAll();
         }
@@ -46,6 +51,12 @@ namespace Konatsu.API.Services
         public HabitEntity GetById(Guid id)
         {
             return _habitRepository.GetById(id);
+        }
+
+        public async void Update(HabitEntity habitEntity)
+        {
+            await _habitRepository.Update(habitEntity);
+            await _habitRepository.SaveChangesAsync();
         }
     }
 }

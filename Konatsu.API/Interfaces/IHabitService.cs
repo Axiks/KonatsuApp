@@ -12,8 +12,9 @@ namespace Konatsu.API.Interfaces
     {
         Task<Guid> Create(HabitEntity habitEntity);
         HabitEntity GetById(Guid id);
-        void Delete(Guid id);
-        void ForceDelete(Guid id);
-        List<HabitEntity> GetAll();
+        void Update(HabitEntity habitEntity);
+        Task Delete(Guid id);
+        Task Remove(HabitEntity habitEntity);
+        IQueryable<HabitEntity> GetAll();
     }
 }

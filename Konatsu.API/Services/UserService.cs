@@ -3,6 +3,7 @@ using Konatsu.API.Entities;
 using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
 using Konatsu.API.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,12 +20,14 @@ namespace Konatsu.API.Services
         private readonly IEfRepository<UserEntity> _userRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(IEfRepository<UserEntity> userRepository, IConfiguration configuration, IMapper mapper)
+        public UserService(IEfRepository<UserEntity> userRepository, IConfiguration configuration, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -52,6 +55,11 @@ namespace Konatsu.API.Services
         public UserEntity GetById(Guid id)
         {
             return _userRepository.GetById(id);
+        }
+
+        public void AuthUser()
+        {
+            var username = _httpContextAccessor.HttpContext.User.Identity.Name;
         }
 
         public async Task<AuthenticateResponse> Register(UserModel userModel)

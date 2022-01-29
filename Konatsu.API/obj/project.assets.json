@@ -8352,23 +8352,22 @@
   },
   "packageFolders": {
     "C:\\Users\\Niko\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niko\\source\\repos\\Konatsu\\Konatsu.API\\Konatsu.API.csproj",
+      "projectUniqueName": "E:\\Project\\KonatsuApp\\Konatsu.API\\Konatsu.API.csproj",
       "projectName": "Konatsu.API",
-      "projectPath": "C:\\Users\\Niko\\source\\repos\\Konatsu\\Konatsu.API\\Konatsu.API.csproj",
+      "projectPath": "E:\\Project\\KonatsuApp\\Konatsu.API\\Konatsu.API.csproj",
       "packagesPath": "C:\\Users\\Niko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Niko\\source\\repos\\Konatsu\\Konatsu.API\\obj\\",
+      "outputPath": "E:\\Project\\KonatsuApp\\Konatsu.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Niko\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8461,12 +8460,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.13, 5.0.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

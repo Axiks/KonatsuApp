@@ -1,4 +1,5 @@
 ﻿using Konatsu.API.Entities;
+using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -34,6 +35,7 @@ namespace Konatsu.API.Controllers
         }
 
         // POST api/<HabitsController>
+        [Authorize]
         [HttpPost]
         public IActionResult Post(HabitEntity habitEntity)
         {
@@ -49,6 +51,7 @@ namespace Konatsu.API.Controllers
             _
         }*/
 
+        [Authorize]
         // DELETE api/<HabitsController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)

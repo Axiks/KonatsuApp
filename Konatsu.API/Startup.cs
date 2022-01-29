@@ -18,6 +18,8 @@ using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
 using Konatsu.API.Services;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Konatsu.API
 {
@@ -48,6 +50,8 @@ namespace Konatsu.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Konatsu.API", Version = "v1" });
             });
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHabitService, HabitService>();
         }

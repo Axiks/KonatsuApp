@@ -57,9 +57,10 @@ namespace Konatsu.API.Services
             return _userRepository.GetById(id);
         }
 
-        public void AuthUser()
+        public UserEntity AuthUser()
         {
-            var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+            UserEntity user = (UserEntity)_httpContextAccessor.HttpContext.Items["User"];
+            return user;
         }
 
         public async Task<AuthenticateResponse> Register(UserModel userModel)

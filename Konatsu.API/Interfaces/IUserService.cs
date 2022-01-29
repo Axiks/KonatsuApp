@@ -15,5 +15,6 @@ namespace Konatsu.API.Interfaces
         Task<AuthenticateResponse> Register(UserModel userModel);
         IEnumerable<UserEntity> GetAll();
         UserEntity GetById(Guid id);
+        UserEntity AuthUser();
     }
 }

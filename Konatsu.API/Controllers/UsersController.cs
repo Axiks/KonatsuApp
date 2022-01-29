@@ -48,5 +48,13 @@ namespace Konatsu.API.Controllers
             var users = _userService.GetAll();
             return Ok(users);
         }
+
+        [Authorize]
+        [HttpGet("getMe")]
+        public IActionResult GetMe()
+        {
+            var users = _userService.AuthUser();
+            return Ok(users);
+        }
     }
 }

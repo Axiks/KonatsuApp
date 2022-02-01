@@ -1,8 +1,11 @@
 ﻿using Konatsu.API.Entities;
+using Konatsu.API.Helpers;
 using Konatsu.API.Interfaces;
+using Konatsu.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,9 +16,11 @@ namespace Konatsu.API.Controllers
     public class HabitsController : ControllerBase
     {
         private readonly IHabitService _habitService;
-        public HabitsController(IHabitService habitService)
+        private readonly IUserService _userService;
+        public HabitsController(IHabitService habitService, IUserService userService)
         {
             _habitService = habitService;
+            _userService = userService;
         }
         // GET: api/<HabitsController>
         [HttpGet]
@@ -34,22 +39,35 @@ namespace Konatsu.API.Controllers
         }
 
         // POST api/<HabitsController>
+        [Authorize]
         [HttpPost]
         public IActionResult Post(HabitEntity habitEntity)
         {
+            habitEntity.UserCreated = _userService.AuthUser().Id;
             var habit = _habitService.Create(habitEntity);
             return Ok(habit.Result);
         }
 
-        /*// PUT api/<HabitsController>/5
+        // PUT api/<HabitsController>
+        [Authorize]
         [HttpPut("{id}")]
-        public void Put(Guid id, HabitEntity habitEntity)
+        public async Task<IActionResult> Put(Guid id, HabitRequest habitRequest)
         {
+            // habitEntity.UserCreated = _userService.AuthUser().Id;
             var habit = _habitService.GetById(id);
-            _
-        }*/
+
+            if (habit == null)
+                return NotFound($"Employee with Id = {id} not found");
+
+            habit.UserUpdated = _userService.AuthUser().Id;
+            habit.Title = habitRequest.Title;
+            habit.Description = habitRequest.Description;
+            await _habitService.Update(habit);
+            return Ok();
+        }
 
         // DELETE api/<HabitsController>/5
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

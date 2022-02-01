@@ -68,6 +68,7 @@ namespace Konatsu.API.Services
             var user = _mapper.Map<UserEntity>(userModel);
 
             var addedUser = await _userRepository.Add(user);
+            await _userRepository.SaveChangesAsync();
 
             var response = Authenticate(new AuthenticateRequest
             {

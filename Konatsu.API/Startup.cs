@@ -52,6 +52,7 @@ namespace Konatsu.API
             });
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ITagService, TagService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHabitService, HabitService>();
         }

@@ -40,6 +40,7 @@ namespace Konatsu.API.Interfaces
 
         public async Task<Guid> Add<T>(T newEntity) where T : class, IEntity
         {
+            newEntity.IsActive = true;
             var entity = await _context.Set<T>().AddAsync(newEntity);
             return entity.Entity.Id;
         }
@@ -58,6 +59,7 @@ namespace Konatsu.API.Interfaces
 
         public async Task Update<T>(T entity) where T : class, IEntity
         {
+            entity.DateUpdated = DateTime.Now;
             await Task.Run(() => _context.Set<T>().Update(entity));
         }
     }

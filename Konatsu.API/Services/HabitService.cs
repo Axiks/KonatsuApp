@@ -13,14 +13,10 @@ namespace Konatsu.API.Services
     public class HabitService : IHabitService
     {
         private readonly IEfRepository<HabitEntity> _habitRepository;
-        private readonly IConfiguration _configuration;
-        private readonly IMapper _mapper;
 
-        public HabitService(IEfRepository<HabitEntity> habitRepository, IConfiguration configuration, IMapper mapper)
+        public HabitService(IEfRepository<HabitEntity> habitRepository, IEfRepository<UserEntity> userRepository)
         {
             _habitRepository = habitRepository;
-            _configuration = configuration;
-            _mapper = mapper;
         }
 
         public async Task<Guid> Create(HabitEntity habitEntity)
@@ -53,8 +49,10 @@ namespace Konatsu.API.Services
             return _habitRepository.GetById(id);
         }
 
-        public async void Update(HabitEntity habitEntity)
+        public async Task Update(HabitEntity habitEntity)
         {
+            // habitEntity.DateUpdated = DateTime.Now;
+
             await _habitRepository.Update(habitEntity);
             await _habitRepository.SaveChangesAsync();
         }

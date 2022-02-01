@@ -12,7 +12,7 @@ namespace Konatsu.API.Interfaces
     {
         Task<Guid> Create(HabitEntity habitEntity);
         HabitEntity GetById(Guid id);
-        void Update(HabitEntity habitEntity);
+        Task Update(HabitEntity habitEntity);
         Task Delete(Guid id);
         Task Remove(HabitEntity habitEntity);
         IQueryable<HabitEntity> GetAll();

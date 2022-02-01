@@ -14,6 +14,5 @@ namespace Konatsu.API
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<HabitEntity> Habits { get; set; }
-
     }
 }

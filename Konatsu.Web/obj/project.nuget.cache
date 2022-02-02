@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Mw28ChONTAx3IF9uaXHXp7jwQBzfiR3gMjxwPqYf0P9Frskt/WiPtTIyZlGe6SyxHMmwydZVnUTMdNudZJybYw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Niko\\source\\repos\\Konatsu\\Konatsu.Web\\Konatsu.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Niko\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

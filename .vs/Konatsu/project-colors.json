@@ -30,7 +30,17 @@
       "ProjectGuid": "9d6ce1a0-bdf7-4fbc-86ea-fe6ad0af39a1",
       "DisplayName": "Konatsu.Web",
       "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "3cac62c1-5660-4afa-9c84-c98fca5da718": {
+      "ProjectGuid": "3cac62c1-5660-4afa-9c84-c98fca5da718",
+      "DisplayName": "Konatsu.Web",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SpaServices.Extensions;
 
 namespace Konatsu.Web
 {
@@ -15,14 +16,24 @@ namespace Konatsu.Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         }
 
         public IConfiguration Configuration { get; }
+        public string MyAllowSpecificOrigins;
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddCors();
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "C";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,9 +47,16 @@ namespace Konatsu.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials());
 
             app.UseAuthorization();
 

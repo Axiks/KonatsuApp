@@ -40,7 +40,12 @@
       "ProjectGuid": "3cac62c1-5660-4afa-9c84-c98fca5da718",
       "DisplayName": "Konatsu.Web",
       "ColorIndex": 6
+    },
+    "7dce5647-cdbd-42f9-b963-2cfcb7fe9909": {
+      "ProjectGuid": "7dce5647-cdbd-42f9-b963-2cfcb7fe9909",
+      "DisplayName": "Konatsu.SPA",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 8
 }

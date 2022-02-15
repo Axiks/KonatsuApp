@@ -37,3 +37,9 @@ C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\obj\Debug\net5.0\ref\Konatsu.Web.
 C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\obj\Debug\net5.0\Konatsu.Web.pdb
 C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\obj\Debug\net5.0\Konatsu.Web.genruntimeconfig.cache
 C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\obj\Debug\net5.0\Konatsu.Web.csproj.CopyComplete
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\System.Web.Cors.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\System.Web.Http.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\System.Web.Http.Cors.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Niko\source\repos\Konatsu\Konatsu.Web\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
